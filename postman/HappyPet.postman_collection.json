@@ -1,0 +1,575 @@
+{
+	"info": {
+		"_postman_id": "fb4e6bf1-4776-4039-aa73-bd0498be7c1c",
+		"name": "HappyPet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/organization",
+			"item": [
+				{
+					"name": "GET /organizations/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/organizations/search?cityId=2",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"organizations",
+								"search"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /organizations/search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/organizations/search?cityId=2",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"organizations",
+								"search"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /organizations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cityId\": 2,\r\n  \"name\": \"TestName\",\r\n  \"address\": \"TestAddress\",\r\n  \"phoneNumber\": \"+380 65 725 73 72\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{happypet_base_url}}/organizations",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /organizations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(4000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cityId\": 2,\r\n  \"name\": \"\",\r\n  \"address\": \"Te\",\r\n  \"phoneNumber\": \"+380 5 725 73 72\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{happypet_base_url}}/organizations",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /organizations/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/organizations/1",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"organizations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/animals",
+			"item": [
+				{
+					"name": "GET /animals/search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/animals/search?cityId=1&typeId=1&isVaccinated=true",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"animals",
+								"search"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "1"
+								},
+								{
+									"key": "typeId",
+									"value": "1"
+								},
+								{
+									"key": "breedId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "colorId",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "organizationId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "isSterilized",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "isVaccinated",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /animals/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/animals/10",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"animals",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /animals/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Viktoriia\",\r\n  \"lastName\": \"Glushko\",\r\n  \"phoneNumber\": \"+380 66 725 73 72\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{happypet_base_url}}/animals/9",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"animals",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/breeds",
+			"item": [
+				{
+					"name": "GET /breeds/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/animals/search?cityId=1&typeId=1&isVaccinated=true",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"animals",
+								"search"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "1"
+								},
+								{
+									"key": "typeId",
+									"value": "1"
+								},
+								{
+									"key": "breedId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "colorId",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "organizationId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "isSterilized",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "isVaccinated",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/cities",
+			"item": [
+				{
+					"name": "GET /cities/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/cities/list",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"cities",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/genders",
+			"item": [
+				{
+					"name": "GET /genders/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/genders/list",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"genders",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/colors",
+			"item": [
+				{
+					"name": "GET /colors/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/colors/list",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"colors",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/types",
+			"item": [
+				{
+					"name": "GET /types/list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var responseCodeObject = pm.response.json().responseCode;\r",
+									"pm.test(\"Verify ressponse code and message\", () => {\r",
+									"    pm.expect(responseCodeObject.code).to.eql(2000);\r",
+									"    pm.expect(responseCodeObject.codeMessage).to.eql(\"Success\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{happypet_base_url}}/types/list",
+							"host": [
+								"{{happypet_base_url}}"
+							],
+							"path": [
+								"types",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
