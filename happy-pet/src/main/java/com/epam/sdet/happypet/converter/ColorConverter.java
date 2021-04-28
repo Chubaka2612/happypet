@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.converter;
 
-import com.epam.sdet.happypet.model.Color;
+import com.epam.sdet.happypet.entity.Color;
 import com.epam.sdet.happypet.response.dto.ColorResponseDto;
 import org.springframework.stereotype.Component;
 

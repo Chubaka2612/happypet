@@ -1,12 +1,12 @@
-package com.epam.sdet.happypet.model;
+package com.epam.sdet.happypet.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
 import java.util.Objects;
 
 @javax.persistence.Entity
-@Table(name = "color")
-public class Color extends Entity {
+@Table(name = "health")
+public class Health extends Entity {
 
     @Column(name = "description", nullable = false)
     private String description;
@@ -27,12 +27,12 @@ public class Color extends Entity {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Color color = (Color) o;
-        return Objects.equals(description, color.getDescription());
+        Health health = (Health) o;
+        return description.equals(health.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), description);
+        return Objects.hash(description);
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/happy.pet/types")
+@RequestMapping("/api/happy_pet/types")
 public class TypesController extends AbstractController {
 
     @Autowired

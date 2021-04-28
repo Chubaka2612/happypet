@@ -1,11 +1,12 @@
-package com.epam.sdet.happypet.model;
+package com.epam.sdet.happypet.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @javax.persistence.Entity
-@Table(name = "city")
-public class City extends Entity {
+@Table(name = "type")
+public class Type extends Entity {
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -26,15 +27,13 @@ public class City extends Entity {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        if (!super.equals(o)) {
-            return false;
-        }
-        City city = (City) o;
-        return name.equals(city.getName());
+        Type type = (Type) o;
+        return name.equals(type.getName());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), name);
     }
+
 }

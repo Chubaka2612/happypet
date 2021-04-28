@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.converter;
 
-import com.epam.sdet.happypet.model.Organization;
+import com.epam.sdet.happypet.entity.Organization;
 import com.epam.sdet.happypet.repository.CityRepository;
 import com.epam.sdet.happypet.request.dto.OrganizationDto;
 import com.epam.sdet.happypet.response.dto.OrganizationResponseDto;

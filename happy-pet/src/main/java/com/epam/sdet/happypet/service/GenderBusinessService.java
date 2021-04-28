@@ -1,7 +1,7 @@
 package com.epam.sdet.happypet.service;
 
 import com.epam.sdet.happypet.converter.GenderConverter;
-import com.epam.sdet.happypet.model.Gender;
+import com.epam.sdet.happypet.entity.Gender;
 import com.epam.sdet.happypet.repository.GenderRepository;
 import com.epam.sdet.happypet.response.dto.GenderResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;

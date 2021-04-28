@@ -1,11 +1,12 @@
 package com.epam.sdet.happypet.controller;
 
 
-import com.epam.sdet.happypet.model.Animal;
+import com.epam.sdet.happypet.entity.Animal;
 import com.epam.sdet.happypet.request.dto.OwnerDto;
 import com.epam.sdet.happypet.response.wrapper.ItemResponse;
 import com.epam.sdet.happypet.response.wrapper.ItemsResponse;
 import com.epam.sdet.happypet.service.AnimalBusinessService;
+import com.epam.sdet.happypet.validator.OwnerValidator;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.Join;
@@ -15,12 +16,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.DataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/happy.pet/animals")
+@RequestMapping("/api/happy_pet/animals")
 public class AnimalController extends AbstractController {
 
     private static final int DEFAULT_LIMIT = 5;
@@ -31,6 +33,14 @@ public class AnimalController extends AbstractController {
     @GetMapping("/{id}")
     public ResponseEntity<ItemResponse> getById(@PathVariable long id) {
         return getResponseEntityObject(animalService.getById(id));
+    }
+
+    @Autowired
+    private OwnerValidator ownerValidator;
+
+    @InitBinder
+    public void initBinder(DataBinder dataBinder) {
+        dataBinder.addValidators(ownerValidator);
     }
 
     @GetMapping("/search")

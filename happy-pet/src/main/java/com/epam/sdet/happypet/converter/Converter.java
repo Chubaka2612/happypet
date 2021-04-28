@@ -9,7 +9,7 @@ public class Converter {
         try {
             BeanUtils.copyProperties(source, target);
         } catch (Exception e) {
-            throw new DataConversionException("Can't convert data");
+            throw new DataConversionException("Can't convert data" + e.getMessage());
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.epam.sdet.happypet.service;
 
 import com.epam.sdet.happypet.converter.TypeConverter;
-import com.epam.sdet.happypet.model.Type;
+import com.epam.sdet.happypet.entity.Type;
 import com.epam.sdet.happypet.repository.TypeRepository;
 import com.epam.sdet.happypet.response.dto.TypeResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;

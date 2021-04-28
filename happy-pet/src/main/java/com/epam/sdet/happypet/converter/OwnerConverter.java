@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.converter;
 
-import com.epam.sdet.happypet.model.Owner;
+import com.epam.sdet.happypet.entity.Owner;
 import com.epam.sdet.happypet.request.dto.OwnerDto;
 import com.epam.sdet.happypet.response.dto.OwnerResponseDto;
 import org.springframework.stereotype.Component;

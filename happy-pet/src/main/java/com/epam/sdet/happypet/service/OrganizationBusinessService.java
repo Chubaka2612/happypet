@@ -4,7 +4,7 @@ import com.epam.sdet.happypet.converter.OrganizationConverter;
 import com.epam.sdet.happypet.exception.CreateException;
 import com.epam.sdet.happypet.exception.DeleteException;
 import com.epam.sdet.happypet.exception.NotFoundException;
-import com.epam.sdet.happypet.model.Organization;
+import com.epam.sdet.happypet.entity.Organization;
 import com.epam.sdet.happypet.repository.AnimalRepository;
 import com.epam.sdet.happypet.repository.CuratorRepository;
 import com.epam.sdet.happypet.repository.OrganizationRepository;
