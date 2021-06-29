@@ -1,0 +1,2 @@
+INSERT INTO public.owner (first_name, last_name, phone_number, created_at, is_deleted) VALUES ('Liza', 'Klimenko', '+380 95 765 23 41', NOW(), FALSE);
+INSERT INTO public.owner (first_name, last_name, phone_number, created_at, is_deleted) VALUES ('Viktoriia', 'Glushko', '+380 66 725 73 72', NOW(), FALSE);

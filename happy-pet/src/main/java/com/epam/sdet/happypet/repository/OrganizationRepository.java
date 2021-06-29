@@ -1,7 +1,7 @@
 package com.epam.sdet.happypet.repository;
 
 import com.epam.sdet.happypet.exception.DeleteException;
-import com.epam.sdet.happypet.model.Organization;
+import com.epam.sdet.happypet.entity.Organization;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -20,10 +20,6 @@ public interface OrganizationRepository extends PagingAndSortingRepository<Organ
     Organization findByPhoneNumber(String phoneNumber);
 
     List<Organization> findAllByCityId(Long cityId, Pageable pageable);
-
-    Optional<Organization> findById(Long id);
-
-    Page<Organization> findAll(Specification specification, Pageable pageable);
 
     //TODO: Move to general
     @Modifying

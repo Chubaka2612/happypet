@@ -1,26 +1,13 @@
 package com.epam.sdet.happypet.response.wrapper;
 
-import com.epam.sdet.happypet.util.ResponseCode;
-
 import java.util.Objects;
 
 public class ExceptionResponse {
 
-    private ResponseCode responseCode;
-
     private String details;
 
-    public ExceptionResponse(ResponseCode code, String details) {
-        this.responseCode = code;
+    public ExceptionResponse(String details) {
         this.details = details;
-    }
-
-    public ResponseCode getResponseCode() {
-        return responseCode;
-    }
-
-    public void setResponseCode(ResponseCode responseCode) {
-        this.responseCode = responseCode;
     }
 
     public String getDetails() {
@@ -40,12 +27,11 @@ public class ExceptionResponse {
             return false;
         }
         ExceptionResponse that = (ExceptionResponse) o;
-        return responseCode.equals(that.responseCode) &&
-                details.equals(that.details);
+        return details.equals(that.details);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(responseCode, details);
+        return Objects.hash(details);
     }
 }

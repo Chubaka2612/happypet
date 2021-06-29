@@ -1,0 +1,2 @@
+INSERT INTO organization (name, address, phone_number, city_id, created_at, is_deleted) VALUES ('Happy Cat Club', 'Zhukovsky Avenue (Astronomical Street). Kharkiv, Kharkov region', '+380 57 315 40 11', 1, NOW(), FALSE);
+INSERT INTO public.organization (name, address, phone_number, city_id, created_at, is_deleted) VALUES ('Pet4Y', 'Amosova street, 13, Kharkiv, Kharkiv region', '+380 93 408 09 36', 1, NOW(), FALSE);

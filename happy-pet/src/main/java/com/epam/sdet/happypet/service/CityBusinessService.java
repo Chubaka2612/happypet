@@ -2,7 +2,7 @@ package com.epam.sdet.happypet.service;
 
 import com.epam.sdet.happypet.converter.CityConverter;
 import com.epam.sdet.happypet.exception.NotFoundException;
-import com.epam.sdet.happypet.model.City;
+import com.epam.sdet.happypet.entity.City;
 import com.epam.sdet.happypet.repository.CityRepository;
 import com.epam.sdet.happypet.response.dto.CityResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;

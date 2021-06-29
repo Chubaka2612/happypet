@@ -13,8 +13,8 @@ import java.util.Optional;
 @Service
 public class OwnerValidator extends AbstractValidator implements Validator {
 
-    private static final String REGEX_FOR_NAME = "([a-zA-Zа-яА-Яё]){2,250}";
-    private static final String REGEX_FOR_PHONE = "^\\+?3?8?(0[\\s\\.-]\\d{2}[\\s\\.-]\\d{3}[\\s\\.-]\\d{2}[\\s\\.-]\\d{2})$";
+    private static final String REGEX_FOR_NAME = "^.{2,250}$";
+    private static final String REGEX_FOR_PHONE = "^\\+?3?8?0[\\s\\.-]\\d{2}[\\s\\.-]\\d{3}[\\s\\.-]\\d{2}[\\s\\.-]\\d{2}$";
 
     private static final String NAME_VALIDATION_ERROR = "Organization name is not valid";
     private static final String PHONE_VALIDATION_ERROR = "Organization phone number is not valid";

@@ -1,4 +1,4 @@
-package com.epam.sdet.happypet.model;
+package com.epam.sdet.happypet.entity;
 
 import javax.persistence.*;
 import java.util.Objects;

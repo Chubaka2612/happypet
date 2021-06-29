@@ -1,13 +1,11 @@
-package com.epam.sdet.happypet.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.epam.sdet.happypet.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @javax.persistence.Entity
-@Table(name = "owner")
-public class Owner extends Entity {
+@Table(name = "curator")
+public class Curator extends Entity {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -18,9 +16,20 @@ public class Owner extends Entity {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @JsonIgnore
     @Column(name = "is_deleted")
     private boolean isDeleted;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
+    private Organization organization;
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -62,7 +71,7 @@ public class Owner extends Entity {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Owner owner = (Owner) o;
-        return Objects.equals(super.getId(), owner.getId());
+        Curator curator = (Curator) o;
+        return Objects.equals(super.getId(), curator.getId());
     }
 }

@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.converter;
 
-import com.epam.sdet.happypet.model.Breed;
+import com.epam.sdet.happypet.entity.Breed;
 import com.epam.sdet.happypet.repository.TypeRepository;
 import com.epam.sdet.happypet.response.dto.BreedResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class BreedConverter extends Converter {
     public BreedResponseDto entityToResponseDto(Breed breed) {
         BreedResponseDto breedResponseDto = new BreedResponseDto();
         super.convert(breed, breedResponseDto);
-        breedResponseDto.setType(typeDao.findById(breed.getType().getId()).getName())
+        breedResponseDto.setType(typeDao.findById(breed.getType().getId()).get().getName())
                 .setTypeId(breed.getType().getId());
         return breedResponseDto;
     }

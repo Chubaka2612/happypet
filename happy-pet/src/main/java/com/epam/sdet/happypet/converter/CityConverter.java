@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.converter;
 
-import com.epam.sdet.happypet.model.City;
+import com.epam.sdet.happypet.entity.City;
 import com.epam.sdet.happypet.response.dto.CityResponseDto;
 import org.springframework.stereotype.Component;
 

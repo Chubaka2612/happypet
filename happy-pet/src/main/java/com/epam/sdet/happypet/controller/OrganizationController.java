@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.controller;
 
-import com.epam.sdet.happypet.model.Organization;
+import com.epam.sdet.happypet.entity.Organization;
 import com.epam.sdet.happypet.request.dto.OrganizationDto;
 import com.epam.sdet.happypet.response.wrapper.ItemResponse;
 import com.epam.sdet.happypet.response.wrapper.ItemsResponse;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/happy.pet/organizations")
+@RequestMapping("/api/happy_pet/organizations")
 public class OrganizationController extends AbstractController {
 
     private static final int DEFAULT_LIMIT = 10;
@@ -58,6 +58,6 @@ public class OrganizationController extends AbstractController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Organization> deleteOrganization(@PathVariable long id) {
         organizationService.delete(id);
-       return deleteResponseEntityObject();
+        return deleteResponseEntityObject();
     }
 }

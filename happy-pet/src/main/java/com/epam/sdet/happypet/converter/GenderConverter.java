@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.converter;
 
-import com.epam.sdet.happypet.model.Gender;
+import com.epam.sdet.happypet.entity.Gender;
 import com.epam.sdet.happypet.response.dto.GenderResponseDto;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.epam.sdet.happypet.service;
 
 import com.epam.sdet.happypet.converter.BreedConverter;
-import com.epam.sdet.happypet.model.Breed;
+import com.epam.sdet.happypet.entity.Breed;
 import com.epam.sdet.happypet.repository.BreedRepository;
 import com.epam.sdet.happypet.response.dto.BreedResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;

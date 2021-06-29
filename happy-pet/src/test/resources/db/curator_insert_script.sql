@@ -1,0 +1,2 @@
+INSERT INTO public.curator (first_name, last_name, phone_number, created_at, is_deleted, organization_id) VALUES ('Viktoriia', 'Skirko', '+380 95 706 35 23', NOW(), FALSE, 1);
+INSERT INTO public.curator (first_name, last_name, phone_number, created_at, is_deleted, organization_id) VALUES ('Artem', 'Romanenko', '+380 95 888 83 68', NOW(), FALSE, 2);

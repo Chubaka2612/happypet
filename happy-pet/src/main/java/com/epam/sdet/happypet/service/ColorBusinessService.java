@@ -1,7 +1,7 @@
 package com.epam.sdet.happypet.service;
 
 import com.epam.sdet.happypet.converter.ColorConverter;
-import com.epam.sdet.happypet.model.Color;
+import com.epam.sdet.happypet.entity.Color;
 import com.epam.sdet.happypet.repository.ColorRepository;
 import com.epam.sdet.happypet.response.dto.ColorResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;

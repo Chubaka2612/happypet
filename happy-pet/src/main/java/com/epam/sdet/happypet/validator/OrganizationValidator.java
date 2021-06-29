@@ -1,6 +1,6 @@
 package com.epam.sdet.happypet.validator;
 
-import com.epam.sdet.happypet.model.City;
+import com.epam.sdet.happypet.entity.City;
 import com.epam.sdet.happypet.repository.CityRepository;
 import com.epam.sdet.happypet.request.dto.OrganizationDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,9 @@ import java.util.Optional;
 @Service
 public class OrganizationValidator extends AbstractValidator implements Validator {
 
-    private static final String REGEX_FOR_NAME = "([a-zA-Zа-яА-Яё]){2,200}";
-    private static final String REGEX_FOR_ADDRESS = "([a-zA-Zа-яА-Яё]){2,250}";
-    private static final String REGEX_FOR_PHONE = "^\\+?3?8?(0[\\s\\.-]\\d{2}[\\s\\.-]\\d{3}[\\s\\.-]\\d{2}[\\s\\.-]\\d{2})$";
+    private static final String REGEX_FOR_NAME = "^.{2,200}$";
+    private static final String REGEX_FOR_ADDRESS = "^.{2,200}$";
+    private static final String REGEX_FOR_PHONE = "^\\+?3?8?0[\\s\\.-]\\d{2}[\\s\\.-]\\d{3}[\\s\\.-]\\d{2}[\\s\\.-]\\d{2}$";
 
     private static final String NAME_VALIDATION_ERROR = "Organization name is not valid";
     private static final String ADDRESS_VALIDATION_ERROR = "Organization address is not valid";

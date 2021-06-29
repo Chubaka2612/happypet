@@ -1,4 +1,4 @@
-package com.epam.sdet.happypet.model;
+package com.epam.sdet.happypet.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,7 +18,7 @@ public class Organization extends Entity implements NamedObject {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 

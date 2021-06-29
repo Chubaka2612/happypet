@@ -1,14 +1,15 @@
 package com.epam.sdet.happypet.repository;
 
-import com.epam.sdet.happypet.model.Gender;
+import com.epam.sdet.happypet.entity.Gender;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface GenderRepository extends org.springframework.data.repository.Repository<Gender, Long> {
 
     List<Gender> findAll();
 
-    Gender findById(Long genderId);
+    Optional<Gender> findById(Long genderId);
 }

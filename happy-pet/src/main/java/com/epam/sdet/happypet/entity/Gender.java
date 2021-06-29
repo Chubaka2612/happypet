@@ -1,4 +1,4 @@
-package com.epam.sdet.happypet.model;
+package com.epam.sdet.happypet.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
