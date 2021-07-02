@@ -1,0 +1,39 @@
+<div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutWrap="wrap" style="padding-top: 60px;">
+
+    <img fxFlex="30" style="border: 2px solid black" src="data:image/png;base64,{{animal.avatar}}" class = "cover-large">
+    <div fxFlex="70" style="padding-left: 30px;">
+      <div class="pet-name">
+      {{animal.name}}
+      </div>
+      <div class="pet-properties">
+        {{animal.gender | titlecase}}, {{animal.breed | titlecase}} , {{animal.age}}
+      </div>
+      <div>
+        <p-tag class = "p-mr-1" *ngIf="animal.booked" severity="info" value="Booked"></p-tag>
+        <p-tag class = "p-mr-1"  *ngIf="animal.sterilized" severity="success" value="Sterilized"></p-tag>
+        <p-tag class = "p-mr-1"  *ngIf="animal.vaccinated" severity="success" value="Vaccinated"></p-tag>
+        <p-tag class = "p-mr-1"  *ngIf="animal.hasPassport" severity="success" value="Has passport"></p-tag>
+        <p-tag class = "p-mr-1"  *ngIf="animal.health == 'featured'"  severity="warning" value="Featured"></p-tag>
+        <p-tag class = "p-mr-1"  *ngIf="animal.health == 'sick'" severity="danger" value="Sick"></p-tag>
+      </div>
+
+      <div class="pet-stayed">
+        <p>Where and with whom is currently stayed: </p>
+        <h4 class ='pet-header'>{{animal.city}}</h4>
+        <div>Curator {{animal.curatorFirstName}}</div>
+        <h4 class="pet-header">Contact curator</h4>
+        <div>{{animal.curatorPhoneNumber}}</div>
+      </div>
+
+      <div class="pet-stayed">
+        <h4 class ='pet-header'>History</h4>
+        <div>{{animal.history}}</div>
+      </div>
+
+      <div class="pet-stayed">
+        <h4 class="pet-header">Features of behavior</h4>
+        <div>{{animal.behavior}}</div>
+      </div>
+    </div>
+
+  </div>

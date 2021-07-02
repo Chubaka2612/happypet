@@ -1,0 +1,39 @@
+<div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutWrap="wrap">
+  <p-card class="card-padding" fxFlex.gt-md="33" *ngFor="
+    let animal of animals | paginate : {
+      itemsPerPage: pageSize,
+      currentPage: page,
+      totalItems: count
+      };
+    "header={{animal.name}} subheader="{{animal.city}}" [style]="{'width': '400px'}" styleClass="p-card-shadow"
+  >
+    <p-header>
+      <img src="data:image/png;base64,{{animal.avatar}}" class = "cover">
+    </p-header>
+
+    {{animal.gender | titlecase }}, {{animal.age}}
+
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Adopt" [routerLink]=animal.id.toString()></button>
+    </ng-template>
+  </p-card>
+</div>
+
+<div class="d-flex justify-content-center" style="padding-top: 60px;">
+  <pagination-controls
+    previousLabel="Previous Page"
+    nextLabel="Next Page"
+    [responsive]="true"
+    (pageChange)="handlePageChange($event)">
+  </pagination-controls>
+
+  <div class="d-flex flex-row-reverse mb-2">
+    <div style="padding-bottom: 60px;">
+      <select (change)="handlePageSizeChange($event)" class="custom-select" >
+        <option *ngFor="let size of pageSizes" [ngValue]="size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>

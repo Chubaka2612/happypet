@@ -1,0 +1,25 @@
+<p-toast position="bottom-right"></p-toast>
+
+<p-menubar [model]="navigationItems">
+  <ng-template pTemplate="start">
+    <a routerLink="/home">
+      <img src="../../../../assets/logo_lap.png" height="40px" class="p-mr-2">
+    </a>
+  </ng-template>
+</p-menubar>
+
+  <div>
+    <ng-container *ngFor="let item of breadcrumbItems$ | async; first as isFirst">
+      <i *ngIf="!isFirst" class="pi pi-angle-right"></i>
+      <a
+        *ngIf="item.url"
+        [routerLink]="item.url"
+      >{{ item.label }}</a>
+      <span
+        *ngIf="!item.url"
+      >{{ item.label }}</span>
+    </ng-container>
+  </div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>

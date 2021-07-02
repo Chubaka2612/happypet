@@ -1,0 +1,87 @@
+<div class="content-container">
+  <h1>Adopt animal</h1>
+
+  <div class="pet-filters-container"
+       fxLayout="column wrap"
+       fxLayout.md="row wrap"
+       fxLayoutGap="20px">
+
+      <div fxLayout.lt-md="row"
+           fxLayout.md="row"
+           fxLayout="row"
+           fxFlex.md="50"
+           fxLayoutAlign="space-between center"
+           fxLayoutGap="20px" >
+        <p-dropdown  class="filter-padding" fxFlex=100 [options]="cities" [(ngModel)]="selectedCity" placeholder="City"
+                     optionLabel="name"
+                     [showClear]="true"
+                     >
+        </p-dropdown>
+      </div>
+
+      <div fxLayout.lt-md="column"
+           fxLayout.md="column"
+           fxLayout="row"
+           fxFlex.md="50"
+           fxLayoutAlign="space-between center"
+           fxLayoutGap="20px" >
+        <p-dropdown [disabled]="true" class="filter-padding" fxFlex=40 [options]="[]" placeholder="Type"
+                      optionLabel="name"
+                      [showClear]="true">
+        </p-dropdown>
+        <p-dropdown [disabled]="true" class="filter-padding" fxFlex=60  placeholder="Breed"
+                    optionLabel="name"
+                    [showClear]="true">
+        </p-dropdown>
+      </div>
+
+      <div fxLayout.lt-md="column" fxLayout.md="column"
+           fxLayout="row"
+           fxFlex.md="50"
+           fxLayoutAlign="space-between center"
+           fxLayoutGap="20px" >
+        <p-dropdown [disabled]="true" class="filter-padding" fxFlex=20 [options]="[]" placeholder="Gender"
+                    optionLabel="name"
+                    [showClear]="true"
+        >
+        </p-dropdown>
+        <p-dropdown [disabled]="true" class="filter-padding" fxFlex=20 [options]="[]" placeholder="Color"
+                    optionLabel="name"
+                    [showClear]="true">
+        </p-dropdown>
+        <p-dropdown [disabled]="true" class="filter-padding" fxFlex=30 [options]="[]" placeholder="Age"
+                    optionLabel="name"
+                    [showClear]="true">
+        </p-dropdown>
+        <p-dropdown [disabled]="true" class="filter-padding" fxFlex=30 [options]="[]" placeholder="Organization"
+                    optionLabel="name"
+                    [showClear]="true">
+        </p-dropdown>
+    </div>
+
+    <div fxLayout.lt-md="column"
+         fxLayout.md="column"
+         fxLayout="row"
+         fxFlex.md="50"
+         fxLayoutAlign="space-between">
+      <div class="p-field-checkbox">
+        <p-checkbox  [binary]="true" [(ngModel)]="isVaccinated" inputId="vaccinated" ></p-checkbox>
+        <label for="vaccinated">Vaccinated</label>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox [disabled]="true" value="Sterilized" inputId="sterilized"></p-checkbox>
+        <label for="sterilized">Sterilized</label>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox [disabled]="true" value="Featured" inputId="featured"></p-checkbox>
+        <label for="featured">Featured</label>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox [disabled]="true" value="Sick" inputId="sick"></p-checkbox>
+        <label for="featured">Sick</label>
+      </div>
+    </div>
+
+  </div>
+  <app-pets-list [selectedCity]="selectedCity" [isVaccinated]="isVaccinated"></app-pets-list>
+</div>

@@ -1,0 +1,10 @@
+<div class="content-container">
+<!--  property binding from parent component to child component-->
+  <app-pets-details [animal]="animal"></app-pets-details>
+
+  <app-booking-form *ngIf="!animal.booked"></app-booking-form>
+
+  <div *ngIf="animal.booked" style="margin-top: 60px">
+    <p class="pet-header"> You can not adopt this animal, since its under booking</p>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="main-container">
+
+  <div [ngStyle]="{'background-image': 'url(assets/images/home_background.jpg)'}"  class="background-image"> </div>
+  <h1> Are you dreaming of a pet? Find it here! </h1>
+  <button  class="p-mb-3"  pButton type="button" label="Adopt animal" routerLink="/pets"></button>
+
+  <div class="content-container">
+  <p-panel [ngStyle]="{'min-width': '100px'}">
+    <ng-template pTemplate="icons" >
+      <div class= "p-text-bold" style="font-size: 24px">
+        <span class="p-panel-header-icon pi pi-fw pi-info-circle"> </span>
+        What is HappyPet and how does it work?
+     </div>
+    </ng-template>
+    <div class = 'p-text-sm-left' style="font-size: 20px">
+      <p>It is an online service for the adoption, adjustment and assistance of stray animals.
+        It means if you want to get a pet, look for it for free on our website.</p>
+      <p>Find it on HappyPet for free, if you fail, you can always buy it.</p>
+    </div>
+  </p-panel>
+
+  </div>
+</div>
