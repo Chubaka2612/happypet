@@ -5,7 +5,14 @@ import java.util.Objects;
 
 public class ItemsResponse<T> {
 
+    private Long totalItems;
+
     private List<T> items;
+
+    public ItemsResponse(List<T> items, Long totalItems) {
+        this.items = items;
+        this.totalItems = totalItems;
+    }
 
     public ItemsResponse(List<T> items) {
         this.items = items;
@@ -17,6 +24,14 @@ public class ItemsResponse<T> {
 
     public void setItems(List<T> items) {
         this.items = items;
+    }
+
+    public Long getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(Long totalItems) {
+        this.totalItems = totalItems;
     }
 
     @Override

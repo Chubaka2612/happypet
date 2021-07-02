@@ -10,6 +10,8 @@ import com.epam.sdet.happypet.repository.AnimalRepository;
 import com.epam.sdet.happypet.repository.OwnerRepository;
 import com.epam.sdet.happypet.request.dto.OwnerDto;
 import com.epam.sdet.happypet.response.dto.AnimalResponseDto;
+import com.epam.sdet.happypet.response.dto.AnimalStatisticsResponseDto;
+import org.apache.commons.collections4.IteratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +19,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,11 +37,13 @@ public class AnimalBusinessService {
     @Autowired
     private AnimalConverter animalConverter;
 
-    public List<AnimalResponseDto> getAll(Specification specification, Pageable pageable)  {
+    public Map<List<AnimalResponseDto>, Long> getAll(Specification specification, Pageable pageable)  {
         Page<Animal> animals = animalDao.findAll(specification, pageable);
-        return animals.getContent().stream().map(
+        long totalEntries = animals.getTotalElements();
+        List<AnimalResponseDto> result =  animals.getContent().stream().map(
                 animal -> animalConverter.entityToResponseDto(animal))
                 .collect(Collectors.toList());
+        return  Collections.singletonMap(result, totalEntries);
     }
 
     public AnimalResponseDto getById(Long animalId) {
@@ -51,6 +53,18 @@ public class AnimalBusinessService {
         }
         AnimalResponseDto animalResponseDto = animalConverter.entityToResponseDto(animal.get());
         return animalResponseDto;
+    }
+
+    public AnimalStatisticsResponseDto getStatistics(Specification<Animal> specification) {
+        AnimalStatisticsResponseDto statisticsResponseDto = new AnimalStatisticsResponseDto();
+        int total = IteratorUtils.toList(animalDao.findAll(specification).iterator()).size();
+        statisticsResponseDto.setTotal(total);
+        int atHomeBooked  = IteratorUtils.toList(animalDao.findAll().iterator())
+                .stream().filter(animal -> animal.isBooked())
+                .collect(Collectors.toList()).size();
+        statisticsResponseDto.setInHomeBooked(atHomeBooked);
+        statisticsResponseDto.setInShelters(total - atHomeBooked);
+        return statisticsResponseDto;
     }
 
     @Transactional
@@ -74,4 +88,5 @@ public class AnimalBusinessService {
 
         return animalConverter.entityToResponseDto(animal.get());
     }
+
 }
