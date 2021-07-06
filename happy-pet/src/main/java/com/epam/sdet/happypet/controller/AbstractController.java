@@ -6,7 +6,9 @@ import com.epam.sdet.happypet.response.wrapper.ItemsResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class AbstractController {
@@ -28,6 +30,15 @@ public class AbstractController {
         }
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ItemsResponse(results));
+    }
+
+    protected <T> ResponseEntity<ItemsResponse> getResponseEntityList(Map<List<T>, Long> results) {
+        if (results.isEmpty() || results == null) {
+            throw new NotFoundException(NO_FOUND);
+        }
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new ItemsResponse(results.keySet().iterator().next(),
+                        (long)results.values().toArray()[0]));
     }
 
     protected <T> ResponseEntity<T> deleteResponseEntityObject() {

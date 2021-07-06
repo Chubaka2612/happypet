@@ -3,15 +3,24 @@ package com.epam.sdet.happypet.response.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AnimalResponseDto {
 
+    private Long id;
+
+    private byte[] avatar;
+
     private String name;
 
     private String behavior;
+
+    private boolean isBooked;
 
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date birthday;
@@ -59,6 +68,50 @@ public class AnimalResponseDto {
     private Long organizationId;
 
     private String organizationName;
+
+    private String age;
+
+    public AnimalResponseDto() {
+    }
+
+    public boolean isBooked() {
+        return isBooked;
+    }
+
+    public AnimalResponseDto setBooked(boolean booked) {
+        isBooked = booked;
+        return this;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public AnimalResponseDto setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+
+    public AnimalResponseDto setAge(Date birthday) {
+        Period period = Period.between(birthday.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate(), LocalDate.now());
+        age =  period.getYears() + " years " +  period.getMonths() + " months" ;
+        return this;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public AnimalResponseDto setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getName() {
         return name;

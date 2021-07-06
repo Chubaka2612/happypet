@@ -39,7 +39,9 @@ public class AnimalConverter extends Converter {
     public AnimalResponseDto entityToResponseDto(Animal animal) {
         AnimalResponseDto animalResponseDto = new AnimalResponseDto();
         super.convert(animal, animalResponseDto);
-        animalResponseDto.setBreedId(animal.getBreed().getId())
+        animalResponseDto.setId(animal.getId())
+                .setBreedId(animal.getBreed().getId())
+                .setAge(animal.getBirthday())
                 .setBreed(breedDao.findById(animal.getBreed().getId()).get().getName())
                 .setCityId(animal.getCity().getId())
                 .setCity(cityDao.findById(animal.getCity().getId()).get().getName())

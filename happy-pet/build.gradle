@@ -29,6 +29,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.9")
     implementation("net.kaczmarzyk:specification-arg-resolver:2.6.2")
     implementation("com.h2database:h2:1.3.148")
+    implementation('org.apache.commons:commons-collections4:4.3')
 
     //tests
     testImplementation('org.springframework.boot:spring-boot-starter-test')

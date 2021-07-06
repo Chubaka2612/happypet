@@ -21,6 +21,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/happy_pet/organizations")
+@CrossOrigin(origins = "*")
 public class OrganizationController extends AbstractController {
 
     private static final int DEFAULT_LIMIT = 10;

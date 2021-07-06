@@ -14,7 +14,9 @@ public class Animal extends Entity implements NamedObject {
     private String name;
 
     @Column(name = "avatar")
-    private Byte[] avatar;
+    @Lob
+    @org.hibernate.annotations.Type(type="org.hibernate.type.BinaryType")
+    private byte[] avatar;
 
     @Column(name = "behavior", nullable = false)
     private String behavior;
@@ -63,7 +65,7 @@ public class Animal extends Entity implements NamedObject {
     private Curator curator;
 
     @Column(name = "booked")
-    private boolean booked;
+    private boolean isBooked;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_id", referencedColumnName = "id", nullable = false)
@@ -85,11 +87,11 @@ public class Animal extends Entity implements NamedObject {
         this.name = name;
     }
 
-    public Byte[] getAvatar() {
+    public byte[] getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Byte [] avatar) {
+    public void setAvatar(byte [] avatar) {
         this.avatar = avatar;
     }
 
@@ -142,11 +144,11 @@ public class Animal extends Entity implements NamedObject {
     }
 
     public boolean isBooked() {
-        return booked;
+        return isBooked;
     }
 
     public void setBooked(boolean booked) {
-        this.booked = booked;
+        this.isBooked = booked;
     }
 
     public City getCity() {

@@ -1,6 +1,5 @@
 package com.epam.sdet.happypet.controller;
 
-
 import com.epam.sdet.happypet.entity.Animal;
 import com.epam.sdet.happypet.request.dto.OwnerDto;
 import com.epam.sdet.happypet.response.wrapper.ItemResponse;
@@ -23,9 +22,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/happy_pet/animals")
+@CrossOrigin(origins = "*")
 public class AnimalController extends AbstractController {
 
-    private static final int DEFAULT_LIMIT = 5;
+    private static final int DEFAULT_LIMIT = 10;
 
     @Autowired
     private AnimalBusinessService animalService;
@@ -58,9 +58,31 @@ public class AnimalController extends AbstractController {
                     @Spec(path = "o.id", params = "organizationId", spec = Equal.class),
                     @Spec(path = "isSterilized", spec = Equal.class),
                     @Spec(path = "isVaccinated", spec = Equal.class),
+                    @Spec(path = "isBooked", spec = Equal.class),
             }) Specification<Animal> specification,
             @PageableDefault(size = DEFAULT_LIMIT, sort = "createdAt") Pageable pageable) {
         return getResponseEntityList(animalService.getAll(specification, pageable));
+    }
+
+    @GetMapping("/statistics")
+    public ResponseEntity<ItemResponse> getStatistics(
+            @Join(path = "city", alias = "c")
+            @Join(path = "type", alias = "t")
+            @Join(path = "breed", alias = "b")
+            @Join(path = "color", alias = "cl")
+            @Join(path = "organization", alias = "o")
+            @And({
+                    @Spec(path = "c.id", params = "cityId", spec = Equal.class),
+                    @Spec(path = "t.id", params = "typeId", spec = Equal.class),
+                    @Spec(path = "b.id", params = "breedId", spec = Equal.class),
+                    @Spec(path = "cl.id", params = "colorId", spec = Equal.class),
+                    @Spec(path = "o.id", params = "organizationId", spec = Equal.class),
+                    @Spec(path = "isSterilized", spec = Equal.class),
+                    @Spec(path = "isVaccinated", spec = Equal.class),
+                    @Spec(path = "isBooked", spec = Equal.class),
+            }) Specification<Animal> specification
+    ) {
+        return getResponseEntityObject(animalService.getStatistics(specification));
     }
 
     @PatchMapping("/{id}")

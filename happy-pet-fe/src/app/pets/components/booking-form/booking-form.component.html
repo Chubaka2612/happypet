@@ -1,0 +1,48 @@
+<p-toast position="center" key="c" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-info-circle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton label="Yes" class="p-button-success" (click)="onConfirm()"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton  label="No" class="p-button-secondary" (click)="onReject()"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+
+<div fxLayout="column wrap" fxLayout.xs="column wrap" fxLayoutGap = "30px"  [style.margin-top]="'60px'">
+  <p class="pet-header">For animal adoption please input the following data:</p>
+   <div class="p-field" fxFlex.gt-md="33">
+      <span class="p-float-label">
+        <input type="text" id="firstName" pInputText  [(ngModel)]="firstName" minlength="2"/>
+        <label for="firstName">First name</label>
+      </span>
+   </div>
+
+  <div class="p-field" fxFlex.gt-md="33">
+    <span class="p-float-label">
+      <input type="text" id="lastName" pInputText  [(ngModel)]="lastName" minlength="2"/>
+      <label for="lastName">Last name</label>
+    </span>
+  </div>
+
+  <div class="p-field" fxFlex.gt-md="33">
+    <span class="p-float-label">
+      <p-inputMask
+        inputId="inputmask"
+        mask = "+380 99 999 99 99"
+        [(ngModel)]="phoneNumber"
+      ></p-inputMask>
+      <label for="inputmask">Phone</label>
+    </span>
+  </div>
+</div>
+<button pButton type="button" label="Adopt" [style.margin-top]="'60px'"  (click)="confirmBooking()"></button>
