@@ -1,0 +1,51 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    container_name: happy-pet-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1q2w3e
+      POSTGRES_DB: happy_pet
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    command: [ "postgres", "-c", "log_statement=all" ]
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    links:
+      - "db:pgsql-server"
+    restart: always
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+  app-server:
+    container_name: happy-pet-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "9000:9000"
+    restart: always
+    depends_on:
+        - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/happy_pet
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1q2w3e
+
+volumes:
+  db-data:
+  pgadmin-data:

@@ -5,10 +5,10 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     initialization-mode: always
-    password: 1q2w3e
-    platform: postgres
     url: jdbc:postgresql://localhost:5432/happy_pet
+    password: 1q2w3e
     username: postgres
+    platform: postgres
 jpa:
   properties:
     hibernate:
