@@ -13,10 +13,8 @@ public class Animal extends Entity implements NamedObject {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "avatar")
-    @Lob
-    @org.hibernate.annotations.Type(type="org.hibernate.type.BinaryType")
-    private byte[] avatar;
+    @Column(name = "avatar_url")
+    private String avatarUrl;
 
     @Column(name = "behavior", nullable = false)
     private String behavior;
@@ -85,14 +83,6 @@ public class Animal extends Entity implements NamedObject {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public byte[] getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(byte [] avatar) {
-        this.avatar = avatar;
     }
 
     public String getBehavior() {
@@ -229,6 +219,14 @@ public class Animal extends Entity implements NamedObject {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     @Override

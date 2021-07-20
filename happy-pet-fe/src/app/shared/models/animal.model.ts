@@ -26,6 +26,6 @@ export class AnimalModel {
   public age? : string;
   public organizationId?: number;
   public organizationName?: string;
-  public avatar?: string;
   public booked?: boolean;
+  public avatarUrl?: string;
 }

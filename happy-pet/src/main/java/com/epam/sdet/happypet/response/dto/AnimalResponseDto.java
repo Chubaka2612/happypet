@@ -14,7 +14,7 @@ public class AnimalResponseDto {
 
     private Long id;
 
-    private byte[] avatar;
+    private String avatarUrl;
 
     private String name;
 
@@ -80,15 +80,6 @@ public class AnimalResponseDto {
 
     public AnimalResponseDto setBooked(boolean booked) {
         isBooked = booked;
-        return this;
-    }
-
-    public byte[] getAvatar() {
-        return avatar;
-    }
-
-    public AnimalResponseDto setAvatar(byte[] avatar) {
-        this.avatar = avatar;
         return this;
     }
 
@@ -317,6 +308,15 @@ public class AnimalResponseDto {
 
     public AnimalResponseDto setGender(String gender) {
         this.gender = gender;
+        return this;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public AnimalResponseDto setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
         return this;
     }
 
