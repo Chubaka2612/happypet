@@ -2,13 +2,15 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {AnimalModel} from '../../../shared/models/animal.model';
 import {PetService} from '../../services/pet.service';
 import {CityModel} from '../../../shared/models/city.model';
+import {AwsS3Service} from '../../../shared/services/aws/aws-s3.service';
 
 @Component({
   selector: 'app-pets-list',
   templateUrl: './pets-list.component.html',
   styleUrls: ['./pets-list.component.scss'],
 })
-export class PetsListComponent implements OnInit, OnChanges {
+
+export class PetsListComponent implements OnInit, OnChanges{
 
   //list
   animals: AnimalModel[] = [];
@@ -24,16 +26,17 @@ export class PetsListComponent implements OnInit, OnChanges {
   pageSizes = [3, 6, 9];
 
   constructor(
-    private petsService: PetService) {
+    private petsService: PetService,
+    private awsS3Service: AwsS3Service) {
+  }
+
+  ngOnInit(): void {
+    this.retrieveAnimals();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     //track changes on parent component
     this.retrieveAnimals()
-  }
-
-  ngOnInit(): void {
-    this.retrieveAnimals();
   }
 
   retrieveStatistics(): void {
@@ -92,6 +95,10 @@ export class PetsListComponent implements OnInit, OnChanges {
         error => {
           console.log(error);
         });
+  }
+
+  retrieveAnimalAvatar(avatarUrl: string) : string {
+    return this.awsS3Service.retrieveAnimalAvatar(avatarUrl)
   }
 
   handlePageChange(event: number): void {

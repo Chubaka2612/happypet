@@ -1,20 +1,26 @@
 <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutWrap="wrap">
   <p-card class="card-padding" fxFlex.gt-md="33" *ngFor="
-    let animal of animals | paginate : {
+    let item of animals | paginate : {
       itemsPerPage: pageSize,
       currentPage: page,
       totalItems: count
       };
-    "header={{animal.name}} subheader="{{animal.city}}" [style]="{'width': '400px'}" styleClass="p-card-shadow"
+    "header="{{item.name}}" subheader="{{item.city}}" [style]="{'width': '400px'}" styleClass="p-card-shadow"
   >
     <p-header>
-      <img src="data:image/png;base64,{{animal.avatar}}" class = "cover">
+      <div *ngIf="item.avatarUrl;then avatar else no_avatar"></div>
+      <ng-template #avatar>
+        <img [src]= "retrieveAnimalAvatar(item.avatarUrl)" class = "cover">
+      </ng-template>
+      <ng-template #no_avatar>
+        <img src= "../../../../assets/no-avatar-icon.png" class = "cover">
+      </ng-template>
     </p-header>
 
-    {{animal.gender | titlecase }}, {{animal.age}}
+    {{item.gender | titlecase }}, {{item.age}}
 
     <ng-template pTemplate="footer">
-      <button pButton type="button" label="Adopt" [routerLink]=animal.id.toString()></button>
+      <button pButton type="button" label="Adopt" [routerLink]=item.id.toString()></button>
     </ng-template>
   </p-card>
 </div>
