@@ -40,7 +40,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         dir('happy-pet') {
-          script{
+          script {
             bat 'gradle clean build -x test'
             bat 'docker build -f Dockerfile .'
           }
@@ -54,8 +54,22 @@ pipeline {
         }
       }
     }
-  }
 
+    stage('Execute Automation Api Tests') {
+      steps {
+        dir('happy-pet-automation') {
+          script {
+            try {
+              bat "gradle clean test --tests com.epam.sdet.happypet.tests.api*"
+            }
+            finally {
+              junit '**/build/test-results/test/*.xml'
+            }
+          }
+        }
+      }
+    }
+  }
   post {
     always {
       script {
