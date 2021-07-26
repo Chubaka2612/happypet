@@ -15,6 +15,7 @@ import { PetsDetailsPageComponent } from './pets/pages/pets-details-page/pets-de
 import { MessageService } from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {ToastService} from './shared/services';
+import {AwsS3Service} from './shared/services/aws/aws-s3.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {ToastService} from './shared/services';
   providers: [
     MessageService,
     ToastService,
+    AwsS3Service,
     PetsListComponent //for binding with parent component
   ],
   bootstrap: [AppComponent]

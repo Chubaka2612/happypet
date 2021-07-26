@@ -1,7 +1,14 @@
 <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutWrap="wrap" style="padding-top: 60px;">
 
-    <img fxFlex="30" style="border: 2px solid black" src="data:image/png;base64,{{animal.avatar}}" class = "cover-large">
-    <div fxFlex="70" style="padding-left: 30px;">
+  <div *ngIf="animal.avatarUrl;then avatar else no_avatar"></div>
+  <ng-template #avatar>
+    <img fxFlex="30" style="border: 2px solid black" [src]= "retrieveAnimalAvatar(animal.avatarUrl)" class = "cover-large">
+  </ng-template>
+  <ng-template #no_avatar>
+    <img fxFlex="30" style="border: 2px solid black"  src= "../../../../assets/no-avatar-icon.png" class = "cover-large">
+  </ng-template>
+
+  <div fxFlex="70" style="padding-left: 30px;">
       <div class="pet-name">
       {{animal.name}}
       </div>
